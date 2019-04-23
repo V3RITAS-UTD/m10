@@ -1,10 +1,12 @@
 # m10
 
-Centralized configuration development.
+[![npm version](https://badge.fury.io/js/m10.svg)](https://badge.fury.io/js/m10)
+
+Centralized configuration development for Express APIs.
 Describe your api in one file and just point to handlers and joi validations.
 All routes with middlewares, handler and validation will be automatically loaded on start-up.
 
-Note: To be used with [m10-cli](https://github.com/V3RITAS-UTD/m10-cli) and express framework.
+Scaffold tool: [m10-cli](https://github.com/V3RITAS-UTD/m10-cli)
 
 # Install
 

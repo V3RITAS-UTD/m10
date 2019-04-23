@@ -4,7 +4,7 @@ Centralized configuration development.
 Describe your api in one file and just point to handlers and joi validations.
 All routes with middlewares, handler and validation will be automatically loaded on start-up.
 
-Note: To be used with `m10-cli` and express framework.
+Note: To be used with [m10-cli](https://github.com/V3RITAS-UTD/m10-cli) and express framework.
 
 # Install
 

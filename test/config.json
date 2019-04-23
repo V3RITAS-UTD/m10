@@ -1,0 +1,30 @@
+{
+	"global": {
+		"middleware": "./test/auth.global"
+	},
+	"routes": [
+		{
+			"path": "/todo",
+			"method": "GET",
+			"validate": "./test/todo.validate",
+			"handler": "./test/todo.handler"
+		},
+		{
+			"path": "/ping",
+			"method": "GET",
+			"handler": "./test/todo.ping",
+			"middleware": "./test/auth.specific"
+		},
+		{
+			"path": "/test",
+			"method": "GET",
+			"handler": "./test/todo.ping",
+			"append_middleware": "./test/auth.testPresent"
+		},
+		{
+			"path": "/manager",
+			"method": "GET",
+			"manager": "./test/todo"
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "m10",
+  "version": "0.1.4",
+  "description": "Build express APIs in under 10 minutes thanks to centralized development via config file: enter path, input validation and handler function.",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "prettier-standard '**/*.js'",
+    "dev": "NODE_ENV='test' node test/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/V3RITAS-UTD/m10.git"
+  },
+  "keywords": [
+    "express",
+    "joi",
+    "api",
+    "mvp",
+    "prototype",
+    "10m",
+    "10 minutes"
+  ],
+  "author": "V3RITAS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/V3RITAS-UTD/m10/issues"
+  },
+  "homepage": "https://github.com/V3RITAS-UTD/m10#readme",
+  "dependencies": {
+    "celebrate": "^9.1.0",
+    "debug": "^4.1.1"
+  },
+  "devDependencies": {
+    "express": "^4.16.4",
+    "mocha": "^6.1.4",
+    "prettier-standard": "^9.1.1"
+  }
+}

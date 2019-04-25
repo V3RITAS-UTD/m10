@@ -32,6 +32,11 @@ function nestedLoad (str) {
     m = m[innerKey]
   })
   debug(`done, last element type: ${typeof m}`)
+  if (typeof m === 'undefined') {
+    throw new Error(
+      `File provided with dot ${str} is not defined, make sure you entered the correct path/function`
+    )
+  }
   // return last item found
   return m
 }
@@ -46,8 +51,8 @@ function getArray (item) {
 }
 
 /**
- * Load 10m configuration into express app
- * @param {Object} config - 10m configuration object
+ * Load m10 configuration into express app
+ * @param {Object} config - m10 configuration object
  * @param {Object} app - Express app object
  * @param {Object} ops - Options object
  */

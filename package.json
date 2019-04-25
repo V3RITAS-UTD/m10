@@ -1,11 +1,12 @@
 {
   "name": "m10",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Build express APIs in under 10 minutes thanks to centralized development via config file: enter path, input validation and handler function.",
   "main": "src/index.js",
   "scripts": {
     "lint": "prettier-standard '**/*.js'",
-    "dev": "NODE_ENV='test' node test/server"
+    "dev": "NODE_ENV='test' node test/dev/server",
+    "test": "NODE_ENV='test' mocha"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,10 @@
     "debug": "^4.1.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "express": "^4.16.4",
     "mocha": "^6.1.4",
-    "prettier-standard": "^9.1.1"
+    "prettier-standard": "^9.1.1",
+    "supertest": "^4.0.2"
   }
 }

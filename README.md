@@ -1,6 +1,7 @@
 # m10
 
-[![npm version](https://badge.fury.io/js/m10.svg)](https://badge.fury.io/js/m10)
+[![npm version](https://badge.fury.io/js/m10.svg)](https://badge.fury.io/js/m10) 
+[![Build Status](https://travis-ci.org/V3RITAS-UTD/m10.svg?branch=master)](https://travis-ci.org/V3RITAS-UTD/m10)
 
 Centralized configuration development for Express APIs.
 Describe your api in one file and just point to handlers and joi validations.

@@ -12,6 +12,8 @@ Scaffold tool: [m10-cli](https://github.com/V3RITAS-UTD/m10-cli)
 
 `npm install --save m10` or `yarn add m10`
 
+Supported only Node.js 8+
+
 # Usage
 
 ```js

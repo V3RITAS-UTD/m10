@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "prettier-standard '**/*.js'",
     "dev": "NODE_ENV='test' node test/dev/server",
-    "test": "NODE_ENV='test' mocha",
+    "test": "NODE_ENV='test' nyc --reporter=text mocha",
     "coverage": "NODE_ENV='test' nyc --reporter=html mocha && opn ./coverage/index.html"
   },
   "repository": {

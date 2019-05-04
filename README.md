@@ -7,7 +7,22 @@ Centralized configuration development for Express APIs.
 Describe your api in one file and just point to handlers and joi validations.
 All routes with middlewares, handler and validation will be automatically loaded on start-up.
 
+Suitable for:
+
+ * MVPs
+
+ * Prototypes
+
+ * Small APIs
+
+ * Microservices
+
+
 Scaffold tool: [m10-cli](https://github.com/V3RITAS-UTD/m10-cli)
+
+
+**Work in progress**
+
 
 # Install
 

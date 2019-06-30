@@ -156,6 +156,45 @@ const testSet = [
         }
       ]
     }
+  },
+  {
+    name: 'load handlers without ./',
+    config: {
+      routes: [
+        {
+          path: '/todo',
+          method: 'get',
+          validation: null,
+          handler: 'test/data/handler3.inner.again'
+        }
+      ]
+    }
+  },
+  {
+    name: 'load handler and validation with /',
+    tests: [
+      {
+        path: '/todo?limit=11',
+        status: 400
+      },
+      {
+        path: '/todo?limit=10',
+        status: 200
+      },
+      {
+        path: '/todo',
+        status: 200
+      }
+    ],
+    config: {
+      routes: [
+        {
+          path: '/todo',
+          method: 'get',
+          manager: '/test/data/manager1'
+        }
+      ]
+    }
   }
 ]
 

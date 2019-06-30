@@ -12,8 +12,7 @@ function nestedLoad (str) {
   str = str.replace('.js', '')
   debug(`trying to load ${str}`)
   if (str.startsWith('./') === false) {
-    throw new Error(`Path must start with ./\n Invalid: ${str}`)
-    process.exit(1)
+    str = './' + str
   }
   let handlerSplitDot = str.split('.')
   debug('file handler dot split into', handlerSplitDot)

@@ -115,6 +115,47 @@ const testSet = [
         }
       ]
     }
+  },
+  {
+    name: 'Invalid path',
+    should_throw: true,
+    config: {
+      routes: [
+        {
+          path: '/to do',
+          method: 'get'
+        }
+      ]
+    }
+  },
+  {
+    name: 'Invalid path',
+    should_throw: true,
+    config: {
+      routes: [
+        {
+          path: 'todo',
+          method: 'get'
+        }
+      ]
+    }
+  },
+  {
+    name: 'Invalid path',
+    should_throw: true,
+    config: {
+      routes: [
+        {
+          path: '/todo/inv#alid',
+          method: 'get'
+        },
+        {
+          path: '/todo',
+          method: 'get',
+          manager: './test/data/manager1'
+        }
+      ]
+    }
   }
 ]
 

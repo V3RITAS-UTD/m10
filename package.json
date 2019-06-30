@@ -9,8 +9,8 @@
     "test": "NODE_ENV='test' nyc --reporter=text mocha",
     "coverage": "NODE_ENV='test' nyc --reporter=html mocha && opn ./coverage/index.html"
   },
-  "engines" : {
-    "node" : ">=8.0.0"
+  "engines": {
+    "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",

@@ -108,6 +108,11 @@ module.exports.init = function (config, app, ops) {
       route.handler = route.manager + '.handler'
       debug('validate and handler set', route)
     }
+
+    if (route.path.indexOf(' ') !== -1 || route.path.indexOf('#') !== -1) {
+      throw new Error(`Found invalid path ${route.path}`)
+    }
+
     let infoTxt = ` > ${route.method} ${route.path} => ${route.handler}`
 
     debug('loading handler function')

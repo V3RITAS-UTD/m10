@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-  res.status(200).send('OK')
+  const customStatus =
+    res.locals && res.locals.customStatus ? res.locals.customStatus : 200
+  res.status(customStatus).send('OK')
 }

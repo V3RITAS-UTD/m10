@@ -195,6 +195,134 @@ const testSet = [
         }
       ]
     }
+  },
+  {
+    name: 'test global middleware and null overwrite',
+    tests: [
+      {
+        path: '/todo',
+        status: 200
+      },
+      {
+        path: '/fail-middleware',
+        status: 500
+      }
+    ],
+    config: {
+      global: {
+        middleware: '/test/data/fail-middleware'
+      },
+      routes: [
+        {
+          path: '/todo',
+          method: 'get',
+          handler: '/test/data/handler1',
+          middleware: null // this path should have no middleware
+        },
+        {
+          path: '/fail-middleware',
+          handler: '/test/data/handler1',
+          method: 'get'
+        }
+      ]
+    }
+  },
+  {
+    name: 'test global middleware prepend and null overwrite',
+    tests: [
+      {
+        path: '/middleware-null',
+        status: 200
+      },
+      {
+        path: '/middleware-custom',
+        status: 200
+      },
+      {
+        path: '/no-middleware',
+        status: 500
+      },
+      {
+        path: '/middleware-prepend?test=pass',
+        status: 200
+      }
+    ],
+    config: {
+      global: {
+        middleware: '/test/data/fail-middleware'
+      },
+      routes: [
+        {
+          path: '/middleware-null',
+          method: 'get',
+          handler: '/test/data/handler1',
+          middleware: null // this path should have no middleware
+        },
+        {
+          path: '/middleware-custom',
+          method: 'get',
+          handler: '/test/data/handler1',
+          middleware: '/test/data/success-middleware' // overwrite global middleware
+        },
+        {
+          path: '/no-middleware', // use global one
+          handler: '/test/data/handler1',
+          method: 'get'
+        },
+        {
+          path: '/middleware-prepend',
+          handler: '/test/data/handler1',
+          method: 'get',
+          prepend_middleware: '/test/data/auth' // prepend middleware so we test the data passes between middlewares
+        }
+      ]
+    }
+  },
+  {
+    name: 'test global middleware append and null overwrite',
+    tests: [
+      {
+        path: '/middleware-overwrite',
+        status: 200
+      },
+      {
+        path: '/no-middleware',
+        status: 500
+      },
+      {
+        path: '/middleware-append?customStatus=999&test=pass', // test=pass is for global one, customStatus for the appended one
+        status: 999
+      }
+    ],
+    config: {
+      global: {
+        middleware: '/test/data/auth'
+      },
+      routes: [
+        {
+          path: '/no-middleware',
+          method: 'get',
+          handler: '/test/data/handler1'
+        },
+        {
+          path: '/middleware-overwrite',
+          method: 'get',
+          handler: '/test/data/handler1',
+          middleware: null
+        },
+        {
+          path: '/no-middleware', // use global one
+          handler: '/test/data/handler1',
+          method: 'get'
+        },
+        {
+          path: '/middleware-append',
+          handler: '/test/data/handler1',
+          method: 'get',
+          append_middleware: '/test/data/append-status' // will be called after the global one
+        }
+      ]
+    }
   }
 ]
 

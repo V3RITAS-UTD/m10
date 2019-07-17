@@ -70,14 +70,25 @@ module.exports.init = function (config, app, ops) {
       routeHandlers = getArray(config.global.middleware)
     }
 
+    let middlewareEditMarker = false
     if (typeof route.append_middleware !== 'undefined') {
       debug('appending middleware to this route')
       routeHandlers = routeHandlers.concat(getArray(route.append_middleware))
-    } else if (typeof route.prepend_middleware !== 'undefined') {
+      middlewareEditMarker = true
+    }
+    if (typeof route.prepend_middleware !== 'undefined') {
       debug('prepending middleware to this route')
       const prependMiddleware = getArray(route.prepend_middleware)
       routeHandlers = prependMiddleware.concat(routeHandlers)
-    } else if (typeof route.middleware !== 'undefined') {
+      middlewareEditMarker = true
+    }
+
+    if (typeof route.middleware !== 'undefined') {
+      if (middlewareEditMarker === true) {
+        throw new Error(
+          '`append_middleware` or `prepend_middleware` are declared for this route, remove `middleware` or prepend/append option'
+        )
+      }
       debug('adding specific middleware to this route')
       // middleware is specific to this route (overwrite global)
       routeHandlers =
@@ -124,13 +135,13 @@ module.exports.init = function (config, app, ops) {
 
     let infoTxt = ` > ${route.method} ${route.path} => ${route.handler}`
 
-    debug('loading handler function')
+    debug(`loading handler function ${route.handler}`)
     // load handler function
     let handler = nestedLoad(route.handler)
 
     let schemaInput = null
     if (route.validate) {
-      debug('loading schema input')
+      debug(`loading schema input ${route.validate}`)
       // load schema input
       schemaInput = nestedLoad(route.validate)
     }

@@ -9,8 +9,9 @@ const path = require('path')
  * @returns {Object} - Function or object
  */
 function nestedLoad (str) {
-  str = str.replace('.js', '')
   debug(`trying to load ${str}`)
+  str = str.replace('.js', '')
+  debug(`string parsed ${str}`)
   if (str.startsWith('./') === false) {
     str = './' + str
   }
@@ -72,6 +73,10 @@ module.exports.init = function (config, app, ops) {
     if (typeof route.append_middleware !== 'undefined') {
       debug('appending middleware to this route')
       routeHandlers = routeHandlers.concat(getArray(route.append_middleware))
+    } else if (typeof route.prepend_middleware !== 'undefined') {
+      debug('prepending middleware to this route')
+      const prependMiddleware = getArray(route.prepend_middleware)
+      routeHandlers = prependMiddleware.concat(routeHandlers)
     } else if (typeof route.middleware !== 'undefined') {
       debug('adding specific middleware to this route')
       // middleware is specific to this route (overwrite global)
@@ -91,7 +96,12 @@ module.exports.init = function (config, app, ops) {
           } but validate/handler found on same route, please choose manager only OR validate and handler`
         )
       }
-      debug('loading manager exported function')
+      debug(`loading manager exported function ${route.manager}`)
+      if (typeof route.manager !== 'string') {
+        throw new Error(
+          `manager option must be a valid path, got ${route.manager}`
+        )
+      }
       let managerFn = nestedLoad(route.manager)
       if (typeof managerFn.validate === 'undefined') {
         throw new Error(

@@ -72,6 +72,12 @@ app.listen(3000)
 
         "append_middleware": "./middleware/auth.premiumPlan"
       */
+      /*
+        Prepend this middleware (before the global one), for this route only
+        you can also use an array
+
+        "prepend_middleware": "./middleware/device.mobileOnly"
+      */
     },
     {
       "path": "/ping",

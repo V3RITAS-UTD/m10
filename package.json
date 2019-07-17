@@ -1,6 +1,6 @@
 {
   "name": "m10",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Build express APIs in under 10 minutes thanks to centralized development via config file: enter path, input validation and handler function.",
   "main": "src/index.js",
   "scripts": {
